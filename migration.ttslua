@@ -1,24 +1,217 @@
-function migrateGreen()
+function migrateAll()
+  migrateBlack()
+  migratePurple()
+  migrateGreen()
+  migrateBlue()
+  migrateRed()
+  migrateYellow()
+  migrateBarrels()
+end
 
+
+function migrateGreen()
     GreenChestOne = getObjectFromGUID('2c0eb5')
+    GreenChestTwo = getObjectFromGUID('b1df60')
+    GreenChestFour = getObjectFromGUID('26d5a2')
 
     for _, containedObject in ipairs(GreenChestOne.getObjects()) do
-      containedObject.setDescription("1")
-      print('index = ', containedObject.index, ', name=', containedObject.name, ', guid=', containedObject.getGUID())
-      -- containedObject.setCustomObject({
-      --   description = '1'
-      -- })
-      -- for k, v in pairs(containedObject.getData()) do
-      --   print(k, ' = ', v)
-      -- end
-        -- if containedObject.name == "Super Card" then
-            -- objRef = GreenChestOne.takeObject({
-            --     index = containedObject.index
-            -- })
-            -- print(objRef)
-            -- objRef.setCustomObject({
-              -- description = '1'
-            -- })
-        -- end
+      local chip = GreenChestOne.takeObject({guid = containedObject.guid})
+      chip.setDescription("1")
+      GreenChestOne.putObject(chip)
+      chip.destruct()
     end
+
+    for _, containedObject in ipairs(GreenChestTwo.getObjects()) do
+      local chip = GreenChestTwo.takeObject({guid = containedObject.guid})
+      chip.setDescription("2")
+      GreenChestTwo.putObject(chip)
+      chip.destruct()
+    end
+
+    for _, containedObject in ipairs(GreenChestFour.getObjects()) do
+      local chip = GreenChestFour.takeObject({guid = containedObject.guid})
+      chip.setDescription("4")
+      GreenChestFour.putObject(chip)
+      chip.destruct()
+    end
+end
+
+function migrateBlack()
+    BlackChestOne = getObjectFromGUID('9ac585')
+    for _, containedObject in ipairs(BlackChestOne.getObjects()) do
+      local chip = BlackChestOne.takeObject({guid = containedObject.guid})
+      chip.setDescription("1")
+      BlackChestOne.putObject(chip)
+      chip.destruct()
+    end
+end
+
+function migratePurple()
+    PurpleChestOne = getObjectFromGUID('d76b31')
+    for _, containedObject in ipairs(PurpleChestOne.getObjects()) do
+      local chip = PurpleChestOne.takeObject({guid = containedObject.guid})
+      chip.setDescription("1")
+      PurpleChestOne.putObject(chip)
+      chip.destruct()
+    end
+end
+
+function migrateOrange()
+    OrangeChestOne = getObjectFromGUID('4bde13')
+    OrangeChestSix = getObjectFromGUID('5492ca')
+
+
+    for _, containedObject in ipairs(OrangeChestOne.getObjects()) do
+      local chip = OrangeChestOne.takeObject({guid = containedObject.guid})
+      chip.setDescription("1")
+      OrangeChestOne.putObject(chip)
+      chip.destruct()
+    end
+
+    for _, containedObject in ipairs(OrangeChestSix.getObjects()) do
+      local chip = OrangeChestSix.takeObject({guid = containedObject.guid})
+      chip.setDescription("6")
+      OrangeChestSix.putObject(chip)
+      chip.destruct()
+    end
+end
+
+function migrateRed()
+    RedChestOne = getObjectFromGUID('b710e4')
+    RedChestTwo = getObjectFromGUID('d24d4b')
+    RedChestFour = getObjectFromGUID('76c694')
+
+    for _, containedObject in ipairs(RedChestOne.getObjects()) do
+      local chip = RedChestOne.takeObject({guid = containedObject.guid})
+      chip.setDescription("1")
+      RedChestOne.putObject(chip)
+      chip.destruct()
+    end
+
+    for _, containedObject in ipairs(RedChestTwo.getObjects()) do
+      local chip = RedChestTwo.takeObject({guid = containedObject.guid})
+      chip.setDescription("2")
+      RedChestTwo.putObject(chip)
+      chip.destruct()
+    end
+
+    for _, containedObject in ipairs(RedChestFour.getObjects()) do
+      local chip = RedChestFour.takeObject({guid = containedObject.guid})
+      chip.setDescription("4")
+      RedChestFour.putObject(chip)
+      chip.destruct()
+    end
+end
+
+function migrateBlue()
+    BlueChestOne = getObjectFromGUID('ca5082')
+    BlueChestTwo = getObjectFromGUID('597f5c')
+    BlueChestFour = getObjectFromGUID('b6cb1e')
+
+    for _, containedObject in ipairs(BlueChestOne.getObjects()) do
+      local chip = BlueChestOne.takeObject({guid = containedObject.guid})
+      chip.setDescription("1")
+      BlueChestOne.putObject(chip)
+      chip.destruct()
+    end
+
+    for _, containedObject in ipairs(BlueChestTwo.getObjects()) do
+      local chip = BlueChestTwo.takeObject({guid = containedObject.guid})
+      chip.setDescription("2")
+      BlueChestTwo.putObject(chip)
+      chip.destruct()
+    end
+
+    for _, containedObject in ipairs(BlueChestFour.getObjects()) do
+      local chip = BlueChestFour.takeObject({guid = containedObject.guid})
+      chip.setDescription("4")
+      BlueChestFour.putObject(chip)
+      chip.destruct()
+    end
+end
+
+
+function migrateYellow()
+    YellowChestOne = getObjectFromGUID('5834c4')
+    YellowChestTwo = getObjectFromGUID('c723cb')
+    YellowChestFour = getObjectFromGUID('fbb78e')
+
+    for _, containedObject in ipairs(YellowChestTwo.getObjects()) do
+      local chip = YellowChestTwo.takeObject({guid = containedObject.guid})
+      chip.setDescription("2")
+      YellowChestTwo.putObject(chip)
+      chip.destruct()
+    end
+
+    for _, containedObject in ipairs(YellowChestFour.getObjects()) do
+      local chip = YellowChestFour.takeObject({guid = containedObject.guid})
+      chip.setDescription("4")
+      YellowChestFour.putObject(chip)
+      chip.destruct()
+    end
+end
+
+function migrateBarrels()
+  PurpleBarrel = getObjectFromGUID("23b33f")
+  BlueBarrel = getObjectFromGUID("e24de2")
+  YellowBarrel = getObjectFromGUID("8e8f4d")
+  GreenBarrel = getObjectFromGUID("ee541b")
+  RedBarrel = getObjectFromGUID("74af63")
+
+  for _, containedObject in ipairs(PurpleBarrel.getObjects()) do
+    local chip = PurpleBarrel.takeObject({guid = containedObject.guid})
+    gm = chip.getGMNotes()
+    print('gm ', gm)
+    if gm ~= "" then
+      chip.setDescription("1")
+    else
+      chip.setDescription(gm)
+    end
+    PurpleBarrel.putObject(chip)
+    chip.destruct()
+  end
+  for _, containedObject in ipairs(BlueBarrel.getObjects()) do
+    local chip = BlueBarrel.takeObject({guid = containedObject.guid})
+    gm = chip.getGMNotes()
+    if #gm == 0 then
+      chip.setDescription("1")
+    else
+      chip.setDescription(gm)
+    end
+    BlueBarrel.putObject(chip)
+    chip.destruct()
+  end
+  for _, containedObject in ipairs(YellowBarrel.getObjects()) do
+    local chip = YellowBarrel.takeObject({guid = containedObject.guid})
+    gm = chip.getGMNotes()
+    if #gm == 0 then
+      chip.setDescription("1")
+    else
+      chip.setDescription(gm)
+    end
+    YellowBarrel.putObject(chip)
+    chip.destruct()
+  end
+  for _, containedObject in ipairs(GreenBarrel.getObjects()) do
+    local chip = GreenBarrel.takeObject({guid = containedObject.guid})
+    gm = chip.getGMNotes()
+    if #gm == 0 then
+      chip.setDescription("1")
+    else
+      chip.setDescription(gm)
+    end
+    GreenBarrel.putObject(chip)
+    chip.destruct()
+  end
+  for _, containedObject in ipairs(RedBarrel.getObjects()) do
+    local chip = RedBarrel.takeObject({guid = containedObject.guid})
+    gm = chip.getGMNotes()
+    if #gm == 0 then
+      chip.setDescription("1")
+    else
+      chip.setDescription(gm)
+    end
+    RedBarrel.putObject(chip)
+    chip.destruct()
+  end
 end

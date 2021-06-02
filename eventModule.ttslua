@@ -19,9 +19,7 @@ function onObjectLeaveContainer(container, object)
       bagColor = "Red"
 
     end
-    -- for k, v in pairs(chipObject.getData()) do
-    --   print(k, ' = ', v)
-    -- end
+
     if bagColor ~= "" then
       printToColor("Chip " .. data["Nickname"] .. " of value " .. data["GMNotes"] .. " left " .. bagColor .." bag", "Black", bagColor)
     end
