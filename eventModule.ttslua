@@ -1,0 +1,28 @@
+function onObjectLeaveContainer(container, object)
+    local Ingredients_Barrel_Purple = '23b33f'
+    local Ingredients_Barrel_Blue = 'e24de2'
+    local Ingredients_Barrel_Yellow = '8e8f4d'
+    local Ingredients_Barrel_Green = 'ee541b'
+    local Ingredients_Barrel_Red = '74af63'
+    local chipObject = getObjectFromGUID(object.guid)
+    local data = chipObject.getData()
+    local bagColor = ""
+    if container.getGUID() == Ingredients_Barrel_Purple then
+      bagColor = "Purple"
+    elseif container.getGUID() == Ingredients_Barrel_Blue then
+      bagColor = "Blue"
+    elseif container.getGUID() == Ingredients_Barrel_Yellow then
+      bagColor = "Yellow"
+    elseif container.getGUID() == Ingredients_Barrel_Green then
+      bagColor = "Green"
+    elseif container.getGUID() == Ingredients_Barrel_Red then
+      bagColor = "Red"
+
+    end
+    -- for k, v in pairs(chipObject.getData()) do
+    --   print(k, ' = ', v)
+    -- end
+    if bagColor ~= "" then
+      printToColor("Chip " .. data["Nickname"] .. " of value " .. data["GMNotes"] .. " left " .. bagColor .." bag", "Black", bagColor)
+    end
+end

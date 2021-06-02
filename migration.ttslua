@@ -1,0 +1,24 @@
+function migrateGreen()
+
+    GreenChestOne = getObjectFromGUID('2c0eb5')
+
+    for _, containedObject in ipairs(GreenChestOne.getObjects()) do
+      containedObject.setDescription("1")
+      print('index = ', containedObject.index, ', name=', containedObject.name, ', guid=', containedObject.getGUID())
+      -- containedObject.setCustomObject({
+      --   description = '1'
+      -- })
+      -- for k, v in pairs(containedObject.getData()) do
+      --   print(k, ' = ', v)
+      -- end
+        -- if containedObject.name == "Super Card" then
+            -- objRef = GreenChestOne.takeObject({
+            --     index = containedObject.index
+            -- })
+            -- print(objRef)
+            -- objRef.setCustomObject({
+              -- description = '1'
+            -- })
+        -- end
+    end
+end
