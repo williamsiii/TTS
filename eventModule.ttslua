@@ -8,6 +8,12 @@ function onObjectLeaveContainer(container, object)
     local chipObject = getObjectFromGUID(object.guid)
     local data = chipObject.getData()
     local bagColor = ""
+    -- если контейнер сейчас просматривают, убираем обратно
+    if (container.getVar("beingSearched")) then
+      container.setTable("returningObjects", table.insert(container.getTable("returningObjects"), object.guid))
+      return
+    end
+
     if container.getGUID() == Ingredients_Barrel_Purple_GUID then
       bagColor = "Purple"
     elseif container.getGUID() == Ingredients_Barrel_Blue_GUID then
@@ -20,8 +26,9 @@ function onObjectLeaveContainer(container, object)
       bagColor = "Red"
     end
     if bagColor ~= "" then
-      printToColor("Chip " .. data["Nickname"] .. " of value " .. data["Description"] .. " left " .. bagColor .." bag", "Black", bagColor)
+      printToAll("Chip " .. data["Nickname"] .. " of value " .. data["Description"] .. " left " .. bagColor .." bag", bagColor)
     end
+
 end
 
 function onObjectEnterContainer(container, object)
@@ -40,6 +47,6 @@ function onObjectEnterContainer(container, object)
     bagColor = "Red"
   end
   if bagColor ~= "" then
-    printToColor("Chip " .. data["Nickname"] .. " of value " .. data["Description"] .. " was put in " .. bagColor .." bag", "Black", bagColor)
+    printToAll("Chip " .. data["Nickname"] .. " of value " .. data["Description"] .. " was put in " .. bagColor .." bag", bagColor)
   end
 end

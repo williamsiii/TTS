@@ -1,0 +1,31 @@
+Ingredients_Barrel_Purple_GUID = '23b33f'
+Ingredients_Barrel_Blue_GUID = 'e24de2'
+Ingredients_Barrel_Yellow_GUID = '8e8f4d'
+Ingredients_Barrel_Green_GUID = 'ee541b'
+Ingredients_Barrel_Red_GUID = '74af63'
+
+function onObjectSearchStart(container, player_color)
+    local containerGuid = container.getGUID()
+
+    if containerGuid == Ingredients_Barrel_Purple_GUID or containerGuid == Ingredients_Barrel_Blue_GUID or containerGuid == Ingredients_Barrel_Yellow_GUID or
+      containerGuid == Ingredients_Barrel_Green_GUID or containerGuid == Ingredients_Barrel_Red_GUID then
+        container.setVar("beingSearched", true)
+        container.setTable("returningObjects", {})
+    end
+end
+
+function onObjectSearchEnd(container, player_color)
+    local containerGuid = container.getGUID()
+
+    if containerGuid == Ingredients_Barrel_Purple_GUID or containerGuid == Ingredients_Barrel_Blue_GUID or containerGuid == Ingredients_Barrel_Yellow_GUID or
+      containerGuid == Ingredients_Barrel_Green_GUID or containerGuid == Ingredients_Barrel_Red_GUID then
+        container.setVar("beingSearched", false)
+        returningObjects = container.getTable("returningObjects")
+        print(unpack(returningObjects))
+        for i, guid in pairs(returningObjects) do
+          object = getObjectFromGUID(guid)
+          container.putObject(object)
+        end
+        container.setTable("returningObjects", table.pack())
+    end
+end
