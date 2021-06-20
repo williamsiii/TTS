@@ -1,0 +1,51 @@
+Ingredients_Barrel_Purple_GUID = '23b33f'
+Ingredients_Barrel_Blue_GUID = 'e24de2'
+Ingredients_Barrel_Yellow_GUID = '8e8f4d'
+Ingredients_Barrel_Green_GUID = 'ee541b'
+Ingredients_Barrel_Red_GUID = '74af63'
+
+-- function onObjectLeaveContainer(container, object)
+--     local chipObject = getObjectFromGUID(object.guid)
+--     local data = chipObject.getData()
+--     local bagColor = ""
+--     -- если контейнер сейчас просматривают, убираем обратно
+--     if (container.getVar("beingSearched")) then
+--       container.setTable("returningObjects", table.insert(container.getTable("returningObjects"), object.guid))
+--       return
+--     end
+--
+--     if container.getGUID() == Ingredients_Barrel_Purple_GUID then
+--       bagColor = "Purple"
+--     elseif container.getGUID() == Ingredients_Barrel_Blue_GUID then
+--       bagColor = "Blue"
+--     elseif container.getGUID() == Ingredients_Barrel_Yellow_GUID then
+--       bagColor = "Yellow"
+--     elseif container.getGUID() == Ingredients_Barrel_Green_GUID then
+--       bagColor = "Green"
+--     elseif container.getGUID() == Ingredients_Barrel_Red_GUID then
+--       bagColor = "Red"
+--     end
+--     if bagColor ~= "" then
+--       printToAll("Chip " .. data["Nickname"] .. " of value " .. data["Description"] .. " left " .. bagColor .." bag", bagColor)
+--     end
+-- end
+
+function onObjectEnterContainer(container, object)
+  local chipObject = getObjectFromGUID(object.guid)
+  local data = chipObject.getData()
+  local bagColor = ""
+  if container.getGUID() == Ingredients_Barrel_Purple_GUID then
+    bagColor = "Purple"
+  elseif container.getGUID() == Ingredients_Barrel_Blue_GUID then
+    bagColor = "Blue"
+  elseif container.getGUID() == Ingredients_Barrel_Yellow_GUID then
+    bagColor = "Yellow"
+  elseif container.getGUID() == Ingredients_Barrel_Green_GUID then
+    bagColor = "Green"
+  elseif container.getGUID() == Ingredients_Barrel_Red_GUID then
+    bagColor = "Red"
+  end
+  if bagColor ~= "" then
+    printToAll("Chip " .. data["Nickname"] .. " of value " .. data["Description"] .. " was put in " .. bagColor .." bag", bagColor)
+  end
+end
